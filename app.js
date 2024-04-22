@@ -6,12 +6,11 @@ const weatherInfo = document.getElementById('weatherInfo')
 const buttonEl = document.getElementById('submit')
 
 buttonEl.addEventListener('click', () => {
-  console.log('clicked')
   const getTimelineURL = 'https://api.tomorrow.io/v4/timelines'
   const apikey = 'eJly8pd7iRjR0Qks5O9pgQ1bwEw0ymXp'
   const locale = locationInput.value
   const encodedString = encodeURIComponent(locale)
-  const location = []
+  let location = []
 
   axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${encodedString}.json?proximity=ip&access_token=pk.eyJ1IjoiamJ1Y2FyaWEiLCJhIjoiY2x2OGY1N2NrMGp0bjJqcHFobmE4M3QzaCJ9.jHh_g9nCSNFZL5lAIUErQA&limit=1`).then(response => {
     const apiResponse = response.data
