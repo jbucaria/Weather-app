@@ -6,6 +6,7 @@ const weatherInfo = document.getElementById('weatherInfo')
 const buttonEl = document.getElementById('submit')
 
 buttonEl.addEventListener('click', () => {
+  console.log('clicked')
   const getTimelineURL = 'https://api.tomorrow.io/v4/timelines'
   const apikey = 'eJly8pd7iRjR0Qks5O9pgQ1bwEw0ymXp'
   const locale = locationInput.value
@@ -17,7 +18,7 @@ buttonEl.addEventListener('click', () => {
     const latitude = apiResponse.features[0].center[1]
     const longitude = apiResponse.features[0].center[0]
 
-    let location = [`${longitude}, ${latitude}`]
+    location = [`${longitude}, ${latitude}`].toString()
 
     const fields = ['precipitationIntensity', 'precipitationType', 'windSpeed', 'windGust', 'windDirection', 'temperature', 'temperatureApparent', 'cloudCover', 'cloudBase', 'cloudCeiling', 'weatherCode']
 
