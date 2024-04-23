@@ -1,6 +1,14 @@
-const path = require('path')
+import path from 'path'
+import { fileURLToPath } from 'url'
+import { dirname } from 'path'
+import { createRequire } from 'module' // Import createRequire function
 
-module.exports = {
+const require = createRequire(import.meta.url) // Create a require function for ES modules
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
+
+export default {
   mode: 'development',
   entry: './app.js',
   resolve: {
