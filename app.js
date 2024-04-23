@@ -8,13 +8,17 @@ const buttonEl = document.getElementById('submit')
 buttonEl.addEventListener('click', () => {
   let address = locationInput.value
 
-  geocode(address)
-    .then(data => {
-      getWeather(data).then(data => {
-        weatherInfo.innerText = data
+  if (address) {
+    geocode(address)
+      .then(data => {
+        getWeather(data).then(data => {
+          weatherInfo.innerText = data
+        })
       })
-    })
-    .catch(error => {
-      console.log('Errors:', error.message)
-    })
+      .catch(error => {
+        console.log('Errors:', error.message)
+      })
+  } else {
+    weatherInfo.innerText = 'Please Provide Address'
+  }
 })
